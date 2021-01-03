@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "power5622d998c": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

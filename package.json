@@ -1,0 +1,11 @@
+{
+  "name": "power-5",
+  "version": "1.0.0",
+  "description": "Power5 app. Allows user's to sign up and access workout video content at home.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

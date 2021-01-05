@@ -23,6 +23,7 @@ module.exports = {
   resolve: {
     mainFields: ["browser", "main", "module"],
     extensions: [".js", ".json", ".jsx"],
+    fallback: { crypto: false },
   },
   mode: "development",
   plugins: [

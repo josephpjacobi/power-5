@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import AuthComponent from './components/auth/auth';
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false)
+
   return (
     <div className="App">
-      <header>
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>We now have Auth!</h1>
-      </header>
-      <AmplifySignOut />
+      {isSignedIn ? (
+        <div>
+          <p>Landing Page</p>
+          <button onClick={() => setIsSignedIn(!isSignedIn)}>Sign Out</button>
+        </div>
+      ) : (
+        <div>
+          <button onClick={() => setIsSignedIn(!isSignedIn)}>Sign In</button>
+          <AuthComponent />
+        </div>
+      )}
     </div>
   );
 }
 
-export default withAuthenticator(App);
+export default App;

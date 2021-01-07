@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      {isSignedIn ? (
+      {!isSignedIn ? (
         <div>
           <p>Landing Page</p>
           <button onClick={() => setIsSignedIn(!isSignedIn)}>Sign Out</button>

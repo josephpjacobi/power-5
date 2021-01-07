@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import AuthComponent from './components/auth/auth';
 
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false)
+
   return (
-    <div>
-      <div className="nav-bar">
-        <div className="nav-item">Home</div>
-        <div className="nav-item">About</div>
-        <div className="nav-item">Sign Up / Login</div>
-      </div>
+    <div className="App">
+      {isSignedIn ? (
+        <div>
+          <p>Landing Page</p>
+          <button onClick={() => setIsSignedIn(!isSignedIn)}>Sign Out</button>
+        </div>
+      ) : (
+        <div>
+          <button onClick={() => setIsSignedIn(!isSignedIn)}>Sign In</button>
+          <AuthComponent />
+        </div>
+      )}
     </div>
   );
 }
+
 export default App;

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import { AmplifyAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
-// import AuthComponent from './components/auth/auth';
 
 
 function App() {

@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import './App.css';
-import AuthComponent from './components/auth/auth';
+import { AmplifyAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
+import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 
 
 function App() {
-  const [isSignedIn, setIsSignedIn] = useState(false)
+  const [authState, setAuthState] = useState();
+  const [user, setUser] = useState();
 
-  return (
+  React.useEffect(() => {
+    onAuthUIStateChange((nextAuthState, authData) => {
+      setAuthState(nextAuthState);
+      setUser(authData);
+    });
+  }, []);
+
+  return authState === AuthState.SignedIn && user ? (
     <div className="App">
-      {isSignedIn ? (
-        <div>
-          <p>Landing Page</p>
-          <button onClick={() => setIsSignedIn(!isSignedIn)}>Sign Out</button>
-        </div>
-      ) : (
-        <div>
-          <button onClick={() => setIsSignedIn(!isSignedIn)}>Sign In</button>
-          <AuthComponent />
-        </div>
-      )}
+      <div>Hello, {user.username}</div>
+      <AmplifySignOut />
     </div>
+  ) : (
+    <AmplifyAuthenticator />
   );
 }
 

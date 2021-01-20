@@ -3,6 +3,7 @@ import './App.css';
 import {
   AmplifyAuthenticator,
   AmplifySignUp,
+  AmplifySignIn,
   AmplifySignOut,
 } from "@aws-amplify/ui-react";
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
@@ -62,6 +63,7 @@ function App() {
           },
         ]}
       />
+      <AmplifySignIn headerText="Power5 Sign In" slot="sign-in" />
     </AmplifyAuthenticator>
   );
 }

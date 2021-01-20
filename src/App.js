@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
-import { AmplifyAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
+import {
+  AmplifyAuthenticator,
+  AmplifySignUp,
+  AmplifySignOut,
+} from "@aws-amplify/ui-react";
 import { AuthState, onAuthUIStateChange } from '@aws-amplify/ui-components';
 
 
@@ -21,7 +25,44 @@ function App() {
       <AmplifySignOut />
     </div>
   ) : (
-    <AmplifyAuthenticator />
+    <AmplifyAuthenticator usernameAlias="email">
+      <AmplifySignUp
+        slot="sign-up"
+        usernameAlias="email"
+        formFields={[
+          {
+            type: "first_name",
+            label: "First Name",
+            placeholder: "First Name",
+            required: true,
+          },
+          {
+            type: "last_name",
+            label: "Last Name",
+            placeholder: "Last Name",
+            required: true,
+          },
+          {
+            type: "email",
+            label: "Email Address",
+            placeholder: "Email",
+            required: true,
+          },
+          {
+            type: "password",
+            label: "Password",
+            placeholder: "Password",
+            required: true,
+          },
+          {
+            type: "phone_number",
+            label: "Phone Number",
+            placeholder: "Phone Number",
+            required: false,
+          },
+        ]}
+      />
+    </AmplifyAuthenticator>
   );
 }
 

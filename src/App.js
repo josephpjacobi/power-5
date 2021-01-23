@@ -20,9 +20,19 @@ function App() {
     });
   }, []);
 
+  const logAttrbiutes = (user) => {
+    console.log(`user: ${Object.keys(user.attributes)}`);
+  }
+
   return authState === AuthState.SignedIn && user ? (
+    // custom:last_name,email_verified,custom:first_name,phone_number_verified,phone_number,email
     <div className="App">
       <div>Hello, {user.username}</div>
+      <div>First Name: {user.attributes["custom:first_name"]}</div>
+      <div>Last Name: {user.attributes["custom:last_name"]}</div>
+      <div>Phone Number: {user.attributes.phone_number}</div>
+      <div>Email: {user.attributes.email}</div>
+      <button onClick={() => logAttrbiutes(user)}>User Attributes</button>
       <AmplifySignOut />
     </div>
   ) : (
@@ -32,13 +42,13 @@ function App() {
         usernameAlias="email"
         formFields={[
           {
-            type: "first_name",
+            type: "custom:first_name",
             label: "First Name",
             placeholder: "First Name",
             required: true,
           },
           {
-            type: "last_name",
+            type: "custom:last_name",
             label: "Last Name",
             placeholder: "Last Name",
             required: true,

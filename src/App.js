@@ -32,13 +32,13 @@ function App() {
         usernameAlias="email"
         formFields={[
           {
-            type: "first_name",
+            type: "custom:first_name",
             label: "First Name",
             placeholder: "First Name",
             required: true,
           },
           {
-            type: "last_name",
+            type: "custom:last_name",
             label: "Last Name",
             placeholder: "Last Name",
             required: true,
